@@ -25,12 +25,11 @@ export default function EssentialAlbums({ artistData }: EssentialAlbumsProps) {
         {artistData.essential_albums.map((album, index) => (
           <div key={`${album.title}-${index}`} className="album-item p-3">
             <div className="album-image aspect-square mb-3 overflow-hidden rounded-md shadow-lg">
-              {/* Placeholder gradient for album image */}
-              <div 
-                className="w-full h-full"
-                style={{
-                  background: getAlbumGradient(album.title, index),
-                }}
+              {/* Use img tag with fixed aspect ratio */}
+              <img 
+                src={album.image}
+                alt={`${album.title} album cover`}
+                className="w-full h-full object-cover"
               />
             </div>
             

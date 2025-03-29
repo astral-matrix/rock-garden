@@ -34,12 +34,11 @@ export default function TopSongs({ artistData }: TopSongsProps) {
             className="song-item flex items-center p-3 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             <div className="song-image w-12 h-12 flex-shrink-0 mr-4 overflow-hidden rounded">
-              {/* Placeholder gradient for song image */}
-              <div 
-                className="w-full h-full"
-                style={{
-                  background: getAlbumGradient(song.album, index),
-                }}
+              {/* Use img tag with fixed width and height */}
+              <img 
+                src={song.image}
+                alt={`${song.title} album cover`}
+                className="w-full h-full object-cover"
               />
             </div>
             
