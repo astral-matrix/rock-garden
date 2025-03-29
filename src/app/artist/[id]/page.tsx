@@ -5,6 +5,7 @@ import ArtistBio from '../../components/ArtistBio';
 import TopSongs from '../../components/TopSongs';
 import EssentialAlbums from '../../components/EssentialAlbums';
 import { ArtistProfile } from '../../utils/api';
+import { unstable_noStore } from 'next/cache';
 
 interface ArtistPageProps {
   params: {
@@ -13,7 +14,10 @@ interface ArtistPageProps {
 }
 
 // Get the hardcoded artist data directly in the Server Component
-async function getArtistData(id: string): Promise<ArtistProfile> {
+async function getArtistData(): Promise<ArtistProfile> {
+  // Disable cache storage to ensure dynamic data fetching
+  unstable_noStore();
+  
   // In a real app, this would fetch from a database using the artist ID
   return {
     "artist_id": "12345",
@@ -22,6 +26,7 @@ async function getArtistData(id: string): Promise<ArtistProfile> {
     "follower_count": 11777312,
     "monthly_listeners": 31553777,
     "collabs": ["Kanye Project", "Fender Guitars", "Moog Music"],
+    "bio_image": "/images/radiohead-profile.jpg",
     "bio": "Radiohead are a touchstone for all that is fearless and adventurous in rock, evolving from self-loathing anthems to moody prog rock suites to weathered, if shimmering ballads. Inheritors of a throne previously occupied by , , and (from whom they took their name), the British band spliced 's spaciness with 's messianic arena rock heft and bridged the gap with guitar skronk borrowed from the '80s American underground.",
 
     "top_songs": [
@@ -71,12 +76,9 @@ async function getArtistData(id: string): Promise<ArtistProfile> {
   };
 }
 
-export default async function ArtistPage({ params }: ArtistPageProps) {
-  // Ensure params is properly awaited before accessing properties
-  const id = params?.id || '12345';
-  
-  // Get artist data directly on the server
-  const artistData = await getArtistData(id);
+export default async function ArtistPage({}: ArtistPageProps) {
+  // Get artist data without relying on params
+  const artistData = await getArtistData();
 
   return (
     <div className="artist-layout">

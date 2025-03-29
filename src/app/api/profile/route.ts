@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
         "follower_count": 11777312,
         "monthly_listeners": 31553777,
         "collabs": ["Kanye Project", "Fender Guitars", "Moog Music"],
+        "bio_image": "/images/radiohead-profile.jpg",
         "bio": "Radiohead are a touchstone for all that is fearless and adventurous in rock, evolving from self-loathing anthems to moody prog rock suites to weathered, if shimmering ballads. Inheritors of a throne previously occupied by , , and (from whom they took their name), the British band spliced 's spaciness with 's messianic arena rock heft and bridged the gap with guitar skronk borrowed from the '80s American underground.",
 
         "top_songs": [

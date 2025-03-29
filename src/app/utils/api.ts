@@ -19,6 +19,7 @@ export interface ArtistProfile {
     monthly_listeners: number;
     collabs: string[];
     bio: string;
+    bio_image: string;
     top_songs: TopSong[];
     essential_albums: EssentialAlbum[];
 }
